@@ -1,0 +1,48 @@
+#include <stdio.h>
+#define NUMBER_LIMIT 10000
+
+int is_fibonachi_number( int number )
+{
+    int current  = 1,
+        previous = 1,
+        temp;
+    // Проверка на соответсвие числу фиббоначи
+    while ( current < number )
+    {
+        temp = previous;
+        previous = current;
+        current += temp;
+    }
+
+    if ( current == number )
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int main()
+{
+    int number, sum = 0;
+    do
+    {
+        // Проверка ввода
+        scanf( "%d", &number );
+        if ( number >= NUMBER_LIMIT )
+        {
+            printf("ERROR: number is greater than limit");
+            return 1;
+        }
+        if ( is_fibonachi_number(number) )
+        {
+            sum+=number;
+        }
+
+    } while ( number != 0 ) ;
+
+    printf( "The sum is %d", sum );
+    return 0;
+}
